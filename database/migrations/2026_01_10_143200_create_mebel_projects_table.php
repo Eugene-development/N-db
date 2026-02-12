@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      * 
-     * Таблица товаров мебели (mebel_projects) для карточек товара.
+     * Таблица проектов мебели (mebel_projects) для карточек проекта.
      * Структура: Rubric -> Category -> MebelProject
      * 
      * Примечание: Таблица уже была частично создана ранее,
@@ -30,15 +30,15 @@ return new class extends Migration
                 $table->ulid('category_id')->comment('ID категории');
                 $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
                 
-                // Основные поля товара
+                // Основные поля проекта
                 $table->boolean('is_active')->default(true)->comment('Активность записи');
-                $table->string('value')->comment('Название товара');
+                $table->string('value')->comment('Название проекта');
                 $table->string('slug')->unique()->comment('URL-friendly идентификатор');
-                $table->text('description')->nullable()->comment('Описание товара');
+                $table->text('description')->nullable()->comment('Описание проекта');
                 $table->text('short_description')->nullable()->comment('Краткое описание');
                 
                 // Цена
-                $table->decimal('price', 12, 2)->nullable()->comment('Цена товара');
+                $table->decimal('price', 12, 2)->nullable()->comment('Цена проекта');
                 $table->decimal('old_price', 12, 2)->nullable()->comment('Старая цена (для скидок)');
                 
                 // Дополнительные данные
@@ -48,7 +48,7 @@ return new class extends Migration
                 $table->integer('sort_order')->default(0)->comment('Порядок сортировки');
                 
                 // Статусы
-                $table->boolean('is_featured')->default(false)->comment('Избранный товар');
+                $table->boolean('is_featured')->default(false)->comment('Избранный проект');
                 $table->boolean('is_new')->default(false)->comment('Новинка');
                 
                 // Поля аудита - кто создал/обновил/удалил

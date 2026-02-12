@@ -21,7 +21,7 @@ return new class extends Migration
             
             // Основные поля
             $table->boolean('is_active')->default(true)->comment('Активность записи');
-            $table->string('value')->comment('Название категории товаров');
+            $table->string('value')->comment('Название категории');
             $table->string('slug')->nullable()->comment('URL-friendly идентификатор');
             
             // Сортировка
